@@ -1,0 +1,70 @@
+node_modules
+*.csv
+*.dll
+**/bin/
+2025-1B-T13-ES06-G01.sln
+
+## Build results
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+## Visual Studio specific
+.vs/
+.vscode/
+
+## NuGet packages
+*.nupkg
+packages/
+# (se usa PackageReference no .csproj não precisa ignorar o packages/)
+
+## Logs
+*.log
+
+## Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+
+## OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+## Publish folder
+publish/
+
+## Test results
+TestResults/
+
+## Resharper, Rider and JetBrains tools
+.idea/
+*.DotSettings.user
+
+## Azure Pipeline
+*.azure-pipelines.yml
+
+## Environment files
+.env
+
+## Coverage reports
+coverage/
+*.coverage
+*.coveragexml
+
+## Others
+node_modules/
+!duckdb.dll
+
+*.pfx
+src/api/libduckdb.dylib

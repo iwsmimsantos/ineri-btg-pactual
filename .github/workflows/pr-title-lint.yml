@@ -1,0 +1,19 @@
+name: Lint Pull Request Title
+
+# Dispara na abertura, edição ou push de commits em um PR
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+# Permissão para ler dados de PR
+permissions:
+  pull-requests: read
+
+jobs:
+  title-lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Usa a action que valida Conventional Commits em título de PR
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

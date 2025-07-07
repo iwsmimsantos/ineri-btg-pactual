@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16  # <--- Especifica a imagem direto do Docker Hub
+    container_name: postgres_ineri_db
+    env_file:
+      - .env
+    ports:
+      - "5433:5432" # Porta externa 5433, porta interna do container 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Volume para persistência dos dados do Postgres
+      - ./init-db:/docker-entrypoint-initdb.d # <--- Monta seus scripts de inicialização
+    restart: always
+
+volumes:
+  pgdata:

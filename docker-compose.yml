@@ -1,0 +1,94 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5439:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      - "8765:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - ./src/backend:/src
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./src/api
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    ports:
+      - "8767:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - ./src/api:/src
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      api:
+        condition: service_started
+    ports:
+      - "8769:19000"
+      - "8770:19001"
+      - "8771:19002"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+      - EXPO_TOKEN=9mhwXodM7gWaLkO7IUbx1VaKTwukHxVdDrPT3gVm
+      - WATCHPACK_POLLING=true
+    networks:
+      - app-network
+    command: npx expo start --tunnel
+    stdin_open: true
+    tty: true
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

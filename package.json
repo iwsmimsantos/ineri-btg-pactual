@@ -1,0 +1,36 @@
+{
+  "name": "2025-1b-t13-es06-g01",
+  "version": "1.0.0",
+  "description": "<Table>\r   <tr>\r    <td><a href= \"https://www.btgpactual.com/\"><img src=\"documentos/img/logo-btg.png\" alt=\"Centro Paula Souza\" border=\"0\"></td>\r        <td>\r       <a href= \"https://www.inteli.edu.br/\"><img src=\"documentos/img/logo-Inteli.png\" alt=\"Inteli - Instituto de Tecnologia e Liderança\" border=\"0\"></a>\r     </td>\r   </tr>\r </table>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inteli-College/2025-1B-T13-ES06-G01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Inteli-College/2025-1B-T13-ES06-G01/issues"
+  },
+  "homepage": "https://github.com/Inteli-College/2025-1B-T13-ES06-G01#readme",
+  "dependencies": {
+    "d3-shape": "^3.2.0",
+    "expo": "~53.0.0",
+    "husky": "^9.1.7",
+    "react-native-svg": "^15.12.0",
+    "react-native-svg-charts": "^5.4.0",
+    "recharts": "^2.15.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/react": "~19.0.10"
+  }
+
+  
+}
