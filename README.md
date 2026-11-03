@@ -1,3 +1,15 @@
+## Minha participação (Iasmim Santos)
+
+Projeto em grupo de 10 semanas no Inteli, com o BTG Pactual (abr/2025 a jun/2025). Esta é a cópia pública que o Inteli publicou. Meus 63 commits estão no repositório original do grupo, que é privado.
+
+- Construí a API de recomendação no back-end.
+- Criei os scripts e as migrations do banco de dados.
+- Planejei e documentei o teste de carga, com análise das consultas (EXPLAIN ANALYZE).
+
+**Tecnologias:** C#, .NET, Python e PostgreSQL
+
+---
+
 <Table>
   <tr>
    <td><a href= "https://www.btgpactual.com/"><img src="documentos/img/logo-btg.png" alt="Centro Paula Souza" border="0"></td>
